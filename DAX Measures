@@ -1,0 +1,6 @@
+Total Customers = COUNT('customer_churn_dataset-testing-master'[CustomerID])
+Churned Customers = SUM('customer_churn_dataset-testing-master'[Churn])
+Retained Customers = CALCULATE(COUNT('customer_churn_dataset-testing-master'[CustomerID]),'customer_churn_dataset-testing-master'[Churn] = "No")
+Churn Rate % = DIVIDE([Churned Customers], [Total Customers], 0)
+Avg Spend = DIVIDE(SUM('customer_churn_dataset-testing-master'[Total Spend]),[Total Customers])
+Average Tenure = AVERAGE('customer_churn_dataset-testing-master'[Tenure])
