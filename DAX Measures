@@ -1,6 +1,17 @@
-Total Customers = COUNT('customer_churn_dataset-testing-master'[CustomerID])
-Churned Customers = SUM('customer_churn_dataset-testing-master'[Churn])
-Retained Customers = CALCULATE(COUNT('customer_churn_dataset-testing-master'[CustomerID]),'customer_churn_dataset-testing-master'[Churn] = "No")
-Churn Rate % = DIVIDE([Churned Customers], [Total Customers], 0)
-Avg Spend = DIVIDE(SUM('customer_churn_dataset-testing-master'[Total Spend]),[Total Customers])
-Average Tenure = AVERAGE('customer_churn_dataset-testing-master'[Tenure])
+DEFINE
+    MEASURE 'calculated measure'[Total Customers] = COUNT('customer_churn_dataset-testing-master'[CustomerID])
+    MEASURE 'calculated measure'[Retained Customers] = CALCULATE(COUNT('customer_churn_dataset-testing-master'[CustomerID]),'customer_churn_dataset-testing-master'[Churn] = "No")
+    MEASURE 'calculated measure'[Average Tenure] = AVERAGE('customer_churn_dataset-testing-master'[Tenure])
+    MEASURE 'calculated measure'[Avg Spend] = DIVIDE(SUM('customer_churn_dataset-testing-master'[Total Spend]),[Total Customers])
+    MEASURE 'calculated measure'[Churned Customers] = SUM('customer_churn_dataset-testing-master'[Churn])
+    MEASURE 'calculated measure'[Churn Rate %] = DIVIDE([Churned Customers], [Total Customers], 0)
+
+EVALUATE
+    SUMMARIZECOLUMNS(
+        "Total Customers", [Total Customers],
+        "Retained Customers", [Retained Customers],
+        "Average Tenure", [Average Tenure],
+        "Avg Spend", [Avg Spend],
+        "Churned Customers", [Churned Customers],
+        "Churn Rate %", [Churn Rate %]
+    )
