@@ -1,48 +1,122 @@
-# Customer Churn Analysis Dashboard
-
-##  Project Overview
-This project presents a comprehensive **Customer Churn Analysis Dashboard** built entirely in **Power BI**. The goal is to analyze customer behavior, identify churn patterns, and provide data-driven business insights to help stakeholders understand key drivers of churn and support strategic decision-making for improved retention.
+# 📊 Customer Churn Analysis & Retention Strategy
 
 ---
 
-##  Objectives
-* **Analyze overall customer churn rate** to establish a baseline for retention.
-* **Identify high-risk customer segments** through demographic and behavioral data.
-* **Understand the impact of contract types** (Monthly vs. Annual) on churn.
-* **Evaluate the relationship between support calls** and customer dissatisfaction.
-* **Examine payment delays** and their direct effect on customer retention.
+## 📌 Project Overview
+
+This project presents a comprehensive **Customer Churn Analysis Dashboard** developed using Power BI to analyze customer behavior, identify churn patterns, and generate actionable business insights.
+
+The goal of this analysis is to **understand key factors influencing customer churn** and provide data-driven recommendations to improve customer retention and business performance.
 
 ---
 
-##  Key Business Metrics
+## 🎯 Objectives
+
+- Analyze overall customer churn rate to establish a retention baseline  
+- Identify high-risk customer segments based on behavioral and demographic data  
+- Evaluate the impact of contract types (Monthly vs Annual vs Quarterly) on churn  
+- Understand the relationship between support calls and customer dissatisfaction  
+- Analyze the effect of payment delays on customer retention  
+
+---
+
+## 🛠️ Tools & Technologies Used
+
+- Power BI (Dashboard, DAX, Data Modeling)  
+- SQL (Data Analysis & Querying)  
+- Python (Pandas for Data Cleaning & EDA)  
+- Excel (Data preprocessing)  
+
+---
+
+## 📊 Key Business Metrics
+
 | Metric | Value |
-| :--- | :--- |
-| **Total Customers** | 64,000 |
-| **Overall Churn Rate** | 47.37% |
-| **Average Customer Spend** | 541.02 |
-| **Average Customer Tenure** | 31.99 months |
+|--------|------|
+| Total Customers | 64,000 |
+| Overall Churn Rate | 47.37% |
+| Average Customer Spend | 541.02 |
+| Average Customer Tenure | 31.99 months |
 
 ---
 
-##  Key Insights
-1. **Contract Type & Churn Risk:** Monthly contract customers show the highest churn rate (**51.61%**), while Annual and Quarterly contracts demonstrate significantly better retention.
-2. **Support Calls Impact:** Churn increases significantly after **5+ support calls**. High support interaction is a leading indicator of potential dissatisfaction.
-3. **Churn by Gender:** There is a slight variation in churn distribution between male and female customers, supporting the need for demographic-based analysis.
-4. **Subscription Type Analysis:** Basic, Standard, and Premium plans show similar churn patterns, suggesting that service quality may influence churn more than the plan type itself.
-5. **Payment Delay Impact:** Customers with payment delays beyond **15–20 days** show a significantly higher churn probability.
+## 🔍 Key Insights
+
+1. **Contract Type Impact**  
+   Customers with monthly contracts exhibit the highest churn rate (51.61%), while annual and quarterly plans demonstrate better retention.
+
+2. **Support Call Influence**  
+   Churn probability increases significantly after more than 5 support interactions, indicating dissatisfaction.
+
+3. **Gender-Based Analysis**  
+   Minimal variation observed between male and female churn rates, suggesting gender is not a primary factor.
+
+4. **Subscription Type Analysis**  
+   Similar churn trends across Basic, Standard, and Premium plans indicate that service experience plays a bigger role than pricing tiers.
+
+5. **Payment Delay Effect**  
+   Customers with payment delays exceeding 15–20 days show a significantly higher churn risk.
 
 ---
 
-##  Tools & Technologies Used
-* **Power BI:** Interactive Dashboard & Data Visualization.
-* **Power Query:** Data Cleaning and Transformation.
-* **DAX (Data Analysis Expressions):** Advanced measures for custom metrics.
-* **Data Modeling:** Establishing relationships for accurate reporting.
+## 💡 Business Recommendations
+
+- Encourage customers to switch from monthly to long-term subscription plans  
+- Improve customer support experience to reduce repeated complaints  
+- Implement early intervention strategies for customers with frequent support calls  
+- Introduce payment reminders and flexible billing options to reduce delays  
+- Focus on improving overall service quality rather than pricing strategies  
 
 ---
 
-## 🖥️ Dashboard Preview
-![Dashboard Screenshot](dashboard.jpeg)
+## 🧮 SQL Analysis (Sample Queries)
 
+```sql
+-- Churn rate by contract type
+SELECT contract_type, AVG(churn_rate) AS churn_rate
+FROM customers
+GROUP BY contract_type;
 
+-- Churn based on support calls
+SELECT support_calls, COUNT(*) AS total_customers
+FROM customers
+GROUP BY support_calls
+ORDER BY support_calls;
 
+-- Payment delay impact
+SELECT payment_delay, AVG(churn_rate)
+FROM customers
+GROUP BY payment_delay;
+```
+
+---
+
+## 🐍 Python Analysis (EDA)
+
+- Data cleaning using Pandas  
+- Handling missing values  
+- Exploratory Data Analysis (EDA)  
+- Visualization using Matplotlib / Seaborn  
+
+---
+
+## 📌 Dashboard Features
+
+- KPI Cards (Customers, Churn Rate, Spend, Tenure)  
+- Churn analysis by contract type  
+- Support call impact visualization  
+- Subscription type comparison  
+- Payment delay vs churn analysis  
+- Interactive filters and drill-down  
+
+---
+
+## 📷 Dashboard Preview
+
+![Dashboard](dashboard.jpeg)
+
+---
+
+## 🎯 Conclusion
+
+This project successfully identifies key drivers of customer churn and provides actionable insights to improve retention strategies. The analysis highlights the importance of contract structure, customer support experience, and payment behavior in influencing churn.
